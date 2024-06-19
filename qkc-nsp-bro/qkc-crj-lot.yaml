@@ -1,0 +1,26 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: qkc-crj-lot
+spec:
+  schedule: "0 14 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: my-container
+            image: minho7336/lotte_cronjob:latest
+            env:
+            - name: bootstrap_servers
+              valueFrom:
+                configMapKeyRef:
+                  name: qkc-crj-cnf
+                  key: bootstrap_servers
+            - name: topic
+              valueFrom:
+                configMapKeyRef:
+                  name: qkc-crj-cnf
+                  key: topic
+            command: ["/entrypoint_lotte.sh"]
+          restartPolicy: OnFailure

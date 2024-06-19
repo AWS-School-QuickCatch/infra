@@ -24,4 +24,4 @@ spec:
         - name: BACKEND_ADDR
           value: "192.168.0.10"
         - name: BACKEND_PORT
-          value: "32501"
+          value: "30974"

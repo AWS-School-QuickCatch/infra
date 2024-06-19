@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: qkc-app-fro
+  name: qkc-svc-fro
+  namespace: qkc-nsp-fro
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: qkc-app-fro
+  type: NodePort
+status:
+  loadBalancer: {}

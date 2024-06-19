@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: qkc-con-sim
+spec:
+  replicas: 3  # 병렬로 실행할 파드의 수
+  selector:
+    matchLabels:
+      app: qkc-con-sim
+  template:
+    metadata:
+      labels:
+        app: qkc-con-sim
+    spec:
+      containers:
+      - name: qkc-con-sim
+        image: minho7336/sim-pro:1.0
+        env:
+        - name: KAFKA_BOOTSTRAP_SERVERS
+          value: "[BOOTSTRAP IP]"
+        - name: KAFKA_TOPIC
+          value: "qkc-top-sim"
+        - name: KAFKA_GROUP_ID
+          value: "qkc"
+        - name: MONGO_COLLECTION_NAME
+          value: "similar_product"
+        - name: AWS_REGION
+          valueFrom:
+            configMapKeyRef:
+              name: qkc-db-cnf
+              key: AWS_REGION
+        - name: AWS_ACCESS_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              name: qkc-aws-scr
+              key: aws-access-key-id
+        - name: AWS_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: qkc-aws-scr
+              key: aws-secret-access-key
+        - name: S3_BUCKET_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: qkc-db-cnf
+              key: S3_BUCKET_NAME
+        - name: MONGO_URI
+          valueFrom:
+            configMapKeyRef:
+              name: qkc-db-cnf
+              key: MONGO_URI
+        - name: MONGO_DB_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: qkc-db-cnf
+              key: MONGO_DB_NAME

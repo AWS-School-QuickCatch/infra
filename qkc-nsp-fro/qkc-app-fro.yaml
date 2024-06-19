@@ -16,7 +16,7 @@ spec:
         app: qkc-app-fro
     spec:
       containers:
-      - image: minho7336/qkc-app-fro:1.0
+      - image: hellokyumin/quickcatch:v2.5
         name: quickcatch
         ports:
         - containerPort: 80

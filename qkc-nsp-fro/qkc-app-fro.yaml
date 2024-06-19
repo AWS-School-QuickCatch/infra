@@ -5,6 +5,8 @@ metadata:
     app: qkc-app-fro
   name: qkc-app-fro
   namespace: qkc-nsp-fro
+  annotations:
+     argocd-image-updater.argoproj.io/image-list: quickcatch=docker.io/minho7336/qkc-app-fro:latest
 spec:
   replicas: 3
   selector:

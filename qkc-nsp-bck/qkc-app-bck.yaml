@@ -16,7 +16,7 @@ spec:
         app: qkc-app-bck
     spec:
       containers:
-      - image: crystal119/backend:1.3
+      - image: 192.168.56.104:443/qkc/qkc-app-bck:1.0
         name: backend
         ports:
         - containerPort: 8000

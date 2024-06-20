@@ -16,7 +16,7 @@ spec:
         app: qkc-app-fro
     spec:
       containers:
-      - image: 192.168.56.104:443/qkc-app-fro:1.0
+      - image: 192.168.56.104:443/qkc/qkc-app-fro:1.0
         name: quickcatch
         ports:
         - containerPort: 80
